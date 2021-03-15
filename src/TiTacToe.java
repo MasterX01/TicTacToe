@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TiTacToe {
@@ -46,19 +47,26 @@ public class TiTacToe {
     public static void playerTurn() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the position where you want to make your move (1-9): ");
-        int pos = scan.nextInt();
-        if(pos > 0 && pos <= 9) {
-            if(board[pos] == ' ') {
+
+        Integer[] valid = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        while (true) {
+            int pos = scan.nextInt();
+            if (Arrays.asList(valid).contains(pos) && checkEmpty(pos)) {
                 board[pos] = player;
                 showBoard();
-            }else {
-                System.out.println("The Position you entered is already filled. Please select the position that is empty.");
-                playerTurn();
+                break;
             }
-        }else {
-            System.out.println("Invalid Choice");
-            System.exit(0);
         }
+    }
+
+    public static boolean checkEmpty(int pos) {
+        if(board[pos] == ' ') {
+            return true;
+        }else {
+            System.out.println("The Position you entered is already filled. Please select the position that is empty.");
+            playerTurn();
+        }
+        return true;
     }
 
     public static void main(String[] args) {
