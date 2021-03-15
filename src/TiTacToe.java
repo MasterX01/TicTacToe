@@ -51,10 +51,10 @@ public class TiTacToe {
         Integer[] valid = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int pos = scan.nextInt();
         if (Arrays.asList(valid).contains(pos) && checkEmpty(pos)) {
-            board[pos] = player;
+            board[pos] = player; //UC-5
             showBoard();
         }else {
-            System.out.println("Invalid Choice");
+            System.out.println("Invalid Choice, please enter a number between 1-9.");
             playerTurn();
         }
 
@@ -67,7 +67,7 @@ public class TiTacToe {
             System.out.println("The Position you entered is already filled. Please select the position that is empty.");
             playerTurn();
         }
-        return true;
+        return false;
     }
 
     public static void main(String[] args) {
