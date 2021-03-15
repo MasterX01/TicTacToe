@@ -1,9 +1,14 @@
 public class TiTacToe {
     // UC-1
-    public static void main(String[] args) {
-        char[] board = new char[10];
-        for(int i = 1; i < board.length; i++) {
-            board[i] = (char)' ';
+    char[] board = new char[10];
+    public void makeEmpty() {
+        for (int i = 1; i < board.length; i++) {
+            board[i] = (char) ' ';
         }
+    }
+
+    public static void main(String[] args){
+        TiTacToe obj = new TiTacToe();
+        obj.makeEmpty();
     }
 }
