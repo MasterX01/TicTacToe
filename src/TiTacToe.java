@@ -70,10 +70,19 @@ public class TiTacToe {
         return false;
     }
 
+    public static void toss() {
+        int result = (int) Math.floor((Math.random() * 10) % 2);
+        if(result == 0)
+            System.out.println("Player goes first");
+        else
+            System.out.println("Computer goes first");
+    }
+
     public static void main(String[] args) {
         makeEmpty();
         playerSelect();
         showBoard();
         playerTurn();
+        toss();
     }
 }
