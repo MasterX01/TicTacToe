@@ -49,14 +49,15 @@ public class TiTacToe {
         System.out.println("Please enter the position where you want to make your move (1-9): ");
 
         Integer[] valid = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        while (true) {
-            int pos = scan.nextInt();
-            if (Arrays.asList(valid).contains(pos) && checkEmpty(pos)) {
-                board[pos] = player;
-                showBoard();
-                break;
-            }
+        int pos = scan.nextInt();
+        if (Arrays.asList(valid).contains(pos) && checkEmpty(pos)) {
+            board[pos] = player;
+            showBoard();
+        }else {
+            System.out.println("Invalid Choice");
+            playerTurn();
         }
+
     }
 
     public static boolean checkEmpty(int pos) {
