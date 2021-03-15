@@ -33,7 +33,7 @@ public class TiTacToe {
 
 
     public static void showBoard() {
-        System.out.println("Currently the Board Looks Like ");
+        System.out.println("Currently the Board Looks Like Following ");
         System.out.println(" ");
         System.out.println("\n "+ board[1] + " | "+ board[2] + " | " + board[3]);
         System.out.println("-----------");
@@ -43,10 +43,28 @@ public class TiTacToe {
         System.out.println(" ");
     }
 
+    public static void playerTurn() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter the position where you want to make your move (1-9): ");
+        int pos = scan.nextInt();
+        if(pos > 0 && pos <= 9) {
+            if(board[pos] == ' ') {
+                board[pos] = player;
+                showBoard();
+            }else {
+                System.out.println("The Position you entered is already filled. Please select the position that is empty.");
+                playerTurn();
+            }
+        }else {
+            System.out.println("Invalid Choice");
+            System.exit(0);
+        }
+    }
+
     public static void main(String[] args) {
         makeEmpty();
         playerSelect();
         showBoard();
-        
+        playerTurn();
     }
 }
